@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="assets/image 2.png" width="100px">
+        </div>
+        <div id="h1">
+            <h1>AGENDAMENTO DE BANHO E TOSA</h1>
+        </div>
+        <div id="logo">
+            <img src="assets/image 2.png" width="100px">
+        </div>
+    </header>
+    <section id="sec-form">
+        <div id="form">
+            <form onsubmit="addPet()">
+                <label for="petName">Nome do Pet *</label>
+                <input type="text" required id="fname" name="petName" placeholder="Billy">
+                <label for="petBreed">Raça *</label>
+                <input type="text" required id="fbreed" name="petBreed" placeholder="Shiba">
+                <label for="petOwner">Dono do Pet *</label>
+                <input type="text" required id="fowner" name="petOwner" placeholder="Beatriz Silva">
+                <label for="petPhone">Telefone *</label>
+                <input type="text" required id="fphone" name="petPhone" placeholder="(00)0000-0000"
+                    style="margin-bottom: 2rem">
+
+                <button type="submit">Agendar Pet</button>
+            </form>
+
+        </div>
+        <div id="tabela">
+            <table id="dataTable">
+                <th> ID </th>
+                <th> Nome do Pet </th>
+                <th> Raça </th>
+                <th> Dono do Pet </th>
+                <th> Telefone </th>
+                <th> Remover </th>
+            </table>
+        </div>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
