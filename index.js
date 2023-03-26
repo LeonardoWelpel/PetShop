@@ -1,56 +1,56 @@
+var pets = [];
 
-let pets = [];
-
-function addPet() {//adicionar o pet
-
+function addPet() {
     event.preventDefault();
-
-    ///coletar dados do formulário
-    let pet = {
-        "petName": document.getElementById(fname).value,
-        "petBreed": document.getElementById(fbreed).value,
-        "petOwner": document.getElementById(fowner).value,
-        "petPhone": document.getElementById(fphone).value,
+    let newPet = {
+        "petName": document.getElementById("fname").value,
+        "petBreed": document.getElementById("fbreed").value,
+        "petOwner": document.getElementById("fowner").value,
+        "phone": document.getElementById("fphone").value
     }
-    console.log(pet)
-
-    //limpar o formulário
-    document.getElementById(fname).value = "";
-    document.getElementById(fbreed).value = "";
-    document.getElementById(fowner).value = "";
-    document.getElementById(fphone).value = "";
-
-    pets.push(pet); //inserir o pet que coletei
-
-    renderTable(); //atualizar a tabela
+    resetForm();
+    pets.push(newPet);
+    renderTable();
 }
 
-function renderTable() {//atualizar a tabela
-
-    let table = document.getElementById(dataTable); //encontra a tabela
-
-    //colocando a parte que é fixa (titulo)
-    table.innerHTML = `<tr>
-    <th> ID </th>
-    <th> Nome do Pet </th>
-    <th> Raça </th>
-    <th> Dono do Pet </th>
-    <th> Telefone </th>
-    <th> Remover </th>
-    </tr>`;
-
-
-    //colocar todos os pets dinamicamente na tabela
-    for (let i = 0; i < pet.length; i++) {
-        table.innerHTML = table.innerHTML + `<td>${i}</td>
-    <td> ${pets[i].petName}</td>
-    <td> ${pets[i].petBreed} </td>
-    <td> ${pets[i].petOwner} </td>
-    <td> ${pets[i].petPhone} </td>
-    <td> ${pets[i].petName} </td>
-    <td><img src="assets/remove.png" width="25px" hight="25px" onclick="removePet{${i}}"></td>`;
-    }
-
+function removePet(index){
+    pets.splice(index,1);
+    renderTable();
 }
 
-//remover um pet da tabela 
+function renderTable(){
+    let table = document.getElementById("dataTable");
+    table.innerHTML =  `             <tr>
+    <th>ID</th>
+    <th>Nome do Pet</th>
+    <th>Raça</th>
+    <th>Dono Do Pet</th>
+    <th>Telefone</th>
+    <th>Remover</th>
+</tr>`;
+
+    console.log(pets.length);
+
+    for(let i = 0; i < pets.length; i++)
+    {
+
+        
+        table.innerHTML = table.innerHTML  +  `<tr>
+        <td>${i}</td>
+        <td>${pets[i].petName}</td>
+        <td>${pets[i].petBreed}</td>
+        <td>${pets[i].petOwner}</td>
+        <td>${pets[i].phone}</td>
+        <td><img src="assets/remove.png" width="25px" height="25px" onclick="removePet(${i})"></td>
+    </tr>`
+    }
+}
+
+function resetForm(){
+    document.getElementById("fname").value = "";
+    document.getElementById("fbreed").value = "";
+    document.getElementById("fowner").value = "";
+    document.getElementById("fphone").value = "";
+}
+
+renderTable();
